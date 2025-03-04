@@ -1,4 +1,4 @@
-package org.arcentales.interfaces.model;
+package org.arcentales.poointerfaces.model;
 
 import java.util.Objects;
 
