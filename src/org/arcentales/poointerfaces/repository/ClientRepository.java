@@ -1,25 +1,20 @@
 package org.arcentales.poointerfaces.repository;
 
 import org.arcentales.poointerfaces.model.Client;
+import org.arcentales.poointerfaces.repository.exceptions.ReadAccessDataException;
 
 import java.util.List;
 
 public class ClientRepository extends AbstractCrudRepository<Client> {
 
     @Override
-    public Client getById(Integer id) {
-        Client client = null;
-        for (Client c : datasource) {
-            if (c.getId().equals(id)) client = c;
-        }
-        return client;
-    }
-
-    @Override
-    public void update(Client client) {
+    public void update(Client client) throws ReadAccessDataException {
         Client c = getById(client.getId());
 
-        if (c != null) c.setName(client.getName());
+        if (c != null) {
+            c.setName(client.getName());
+            c.setLastName(client.getLastName());
+        }
     }
 
     @Override

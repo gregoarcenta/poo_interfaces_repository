@@ -11,12 +11,12 @@ import java.util.List;
 public class ExampleGenerics {
     public static void main(String[] args) {
         List<Client> clients = new ArrayList<>();
-        clients.add(new Client("Alex"));
-        clients.add(new Client("Elsa"));
+        clients.add(new Client("Alex", "arcentales"));
+        clients.add(new Client("Elsa", "Vera"));
         System.out.println(clients.getFirst());
 
         Client[] clientsArr = {
-                new Client("Gregory"), new Client("Fernanda")
+                new Client("Fernanda", "Gallardo"), new Client("Ariana", "Grande")
         };
         Integer[] integersArr = {1, 2, 3};
 
@@ -27,9 +27,8 @@ public class ExampleGenerics {
         integers.forEach(System.out::println);
 
         List<PremiumClient> premiumClients = fromArrayToList(new PremiumClient[]{
-                new PremiumClient("Zamira"),
-                new PremiumClient("Axel"),
-                });
+                new PremiumClient("Zamira", "Zambrano"), new PremiumClient("Axel", "White")
+        });
 
         premiumClients.sort(Comparator.comparing(PremiumClient::getName));
         premiumClients.forEach(System.out::println);

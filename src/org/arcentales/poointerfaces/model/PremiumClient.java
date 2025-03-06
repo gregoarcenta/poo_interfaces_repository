@@ -1,8 +1,8 @@
 package org.arcentales.poointerfaces.model;
 
 public class PremiumClient extends Client implements Comparable<PremiumClient> {
-    public PremiumClient(String name) {
-        super(name);
+    public PremiumClient(String name, String lastName) {
+        super(name, lastName);
     }
 
     @Override

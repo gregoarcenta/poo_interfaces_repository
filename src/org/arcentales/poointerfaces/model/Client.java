@@ -2,23 +2,21 @@ package org.arcentales.poointerfaces.model;
 
 import java.util.Objects;
 
-public class Client {
-    private static int lasId;
-    private Integer id;
+public class Client extends BaseEntity {
     private String name;
+    private String lastName;
 
-    public Client() {
-        this.id = ++lasId;
-    }
-
-    public Client(String name) {
-        this();
+    public Client(String name, String lastName) {
         this.name = name;
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "Client{" +
+               "name='" + name + '\'' +
+               ", lastName='" + lastName + '\'' +
+               '}';
     }
 
     @Override
@@ -26,15 +24,7 @@ public class Client {
         System.out.println("equals: " + o);
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id);
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        return Objects.equals(getId(), client.getId());
     }
 
     public String getName() {
@@ -43,5 +33,13 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
