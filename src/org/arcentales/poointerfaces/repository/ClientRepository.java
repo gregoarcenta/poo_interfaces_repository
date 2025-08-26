@@ -3,6 +3,7 @@ package org.arcentales.poointerfaces.repository;
 import org.arcentales.poointerfaces.model.Client;
 import org.arcentales.poointerfaces.repository.exceptions.ReadAccessDataException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientRepository extends AbstractCrudRepository<Client> {
@@ -19,7 +20,8 @@ public class ClientRepository extends AbstractCrudRepository<Client> {
 
     @Override
     public List<Client> getAll(String field, Direction dir) {
-        this.datasource.sort((c1, c2) -> {
+        List<Client> orderedClients = new ArrayList<>(List.copyOf(this.datasource));
+        orderedClients.sort((c1, c2) -> {
             if (dir == Direction.ASC) {
                 switch (field) {
                     case "id":
@@ -37,6 +39,6 @@ public class ClientRepository extends AbstractCrudRepository<Client> {
             }
             return 0;
         });
-        return this.datasource;
+        return orderedClients;
     }
 }

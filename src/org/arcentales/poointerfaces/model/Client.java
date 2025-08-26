@@ -21,7 +21,6 @@ public class Client extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        System.out.println("equals: " + o);
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return Objects.equals(getId(), client.getId());
